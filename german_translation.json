@@ -1,0 +1,49 @@
+{
+    "log_settings": {
+        "title": "Versuchte Command-Nutzung",
+        "text": "Ein Spieler hat versucht, einen Command auszuführen, wozu dieser keine Berechtigung hat!",
+        "author": "SynchroV",
+        "footer": "Dein SynchroV-Team",
+        "field_1": "Command:",
+        "field_2": "User:"
+    },
+    "check_player": {
+        "title": "SynchroV Systems",
+        "url": "https://synchrov.eu",
+        "author": "SynchroV",
+        "footer": "Dein SynchroV-Team",
+        "usage_1": "Nutzung",
+        "usage_2": " <VORNAME> <NACHNAME>"
+    },
+    "check_plate": {
+        "title": "Fahrzeugsuche",
+        "url": "https://synchrov.eu",
+        "author": "SynchroV",
+        "footer": "Dein SynchroV-Team",
+        "name": "Besitzer",
+        "sex": "Geschlecht",
+        "phone": "Telefon",
+        "description": "Die Fahrzeugsuche ergab folgendes Ergebnis:",
+        "plate": "Nummernschild"
+    },
+    "messages": {
+        "insuficient_permissions": "Du hast leider nicht die benötigten Rechte, um diesen Befehl nutzen zu können!",
+        "not_found_user": "Es wurde kein Spieler gefunden.",
+        "not_found_plate": "Es wurde kein Fahrzeug mit diesem Nummernschild gefunden."
+    },
+    "labels": {
+        "name": "Name",
+        "phone": "Telefon",
+        "bank": "Bank",
+        "money": "Bargeld",
+        "black_money": "Schwarzgeld"
+    },
+    "plate_check": {
+        "usage_1": "Nutzung",
+        "usage_2": " <NUMMERNSCHILD>"
+    },
+    "sex": {
+        "male": "Männlich",
+        "female": "Weiblich"
+    }
+}

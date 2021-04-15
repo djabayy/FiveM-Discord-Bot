@@ -1,9 +1,9 @@
 {
     "log_settings": {
-        "title": "Versuchte Command-Nutzung",
-        "text": "Ein Spieler hat versucht, einen Command auszuführen, wozu dieser keine Berechtigung hat!",
+        "title": "Attempted Command Usage",
+        "text": "A player has tried to execute a command for which he has no authorization!",
         "author": "SynchroV",
-        "footer": "Dein SynchroV-Team",
+        "footer": "Your SynchroV-Team",
         "field_1": "Command:",
         "field_2": "User:"
     },
@@ -11,39 +11,40 @@
         "title": "SynchroV Systems",
         "url": "https://synchrov.eu",
         "author": "SynchroV",
-        "footer": "Dein SynchroV-Team",
-        "usage_1": "Nutzung",
-        "usage_2": " <VORNAME> <NACHNAME>"
+        "footer": "Your SynchroV-Team",
+        "usage_1": "Usage",
+        "usage_2": " <FIRSTNAME> <LASTNAME>"
     },
     "check_plate": {
-        "title": "Fahrzeugsuche",
+        "title": "Vehicle search",
         "url": "https://synchrov.eu",
         "author": "SynchroV",
-        "footer": "Dein SynchroV-Team",
-        "name": "Besitzer",
-        "sex": "Geschlecht",
-        "phone": "Telefon",
-        "description": "Die Fahrzeugsuche ergab folgendes Ergebnis:",
-        "plate": "Nummernschild"
+        "footer": "Your SynchroV-Team",
+        "name": "Owner",
+        "sex": "Sex",
+        "phone": "Phone number",
+        "description": "The vehicle search yielded the following result:",
+        "plate": "Licenseplate"
     },
     "messages": {
-        "insuficient_permissions": "Du hast leider nicht die benötigten Rechte, um diesen Befehl nutzen zu können!",
-        "not_found_user": "Es wurde kein Spieler gefunden.",
-        "not_found_plate": "Es wurde kein Fahrzeug mit diesem Nummernschild gefunden."
+        "insuficient_permissions": "Unfortunately, you do not have the necessary rights to use this command!",
+        "not_found_user": "No player was found.",
+        "not_found_plate": "No vehicle was found with this license plate."
     },
     "labels": {
         "name": "Name",
-        "phone": "Telefon",
+        "phone": "Phone",
         "bank": "Bank",
-        "money": "Bargeld",
-        "black_money": "Schwarzgeld"
+        "money": "Money",
+        "black_money": "Black money"
     },
     "plate_check": {
-        "usage_1": "Nutzung",
-        "usage_2": " <NUMMERNSCHILD>"
+        "usage_1": "Usage",
+        "usage_2": " <LICENSEPLATE>"
     },
     "sex": {
-        "male": "Männlich",
-        "female": "Weiblich"
+        "male": "Male",
+        "female": "Female"
     }
 }
+
