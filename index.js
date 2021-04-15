@@ -1,5 +1,3 @@
-const env = require('dotenv');
-env.config();
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('./config.json');
@@ -129,7 +127,7 @@ function sendVehicleEmbed(name, sex, phone, plate, chnl) {
 }
 
 client.once('ready', () => {
-    console.log('Loaded version ' + process.env.VERSION + ' of FiveM Bot by nightstudios.eu');
+    console.log('Loaded FiveM Bot by nightstudios.eu');
 })
 
 client.on('message', message => {

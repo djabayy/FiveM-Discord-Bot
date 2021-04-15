@@ -1,6 +1,7 @@
 {
     "prefix": "!",
     "delete_command_usage": true,
+    "token": "",
     
     "host": "localhost",
     "user": "",
