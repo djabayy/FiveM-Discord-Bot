@@ -1,14 +1,15 @@
 {
+    "useName": false,
     "prefix": "!",
     "delete_command_usage": true,
-    "token": "",
+    "token": "ODMyMjIwODQyNTA2NzE1MTc1.YHgoDg.yQG3YyDlqZ6S8f3ljCozS1KENdY",
     
     "host": "localhost",
-    "user": "",
-    "database": "",
+    "user": "root",
+    "database": "ingame_database",
     "password": "",
-    "staff_role_id": "",
-    "log_channel": "",
+    "staff_role_id": "823621597986160642",
+    "log_channel": "823621598493540357",
     "logo_url": "https://i.ibb.co/GTMkx63/FO71-BD2-CF77-C7-rhinoo3d.jpg"
     
 }

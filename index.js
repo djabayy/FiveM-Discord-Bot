@@ -145,13 +145,22 @@ client.on('message', message => {
             return argEmbed('checkPlayer', trans.check_player.usage_2, trans.check_player.usage_1, message.channel);
         } else {
             if (message.member.roles.cache.has(config.staff_role_id)) {
-                con.query("SELECT firstname, lastname, phone_number, accounts FROM users WHERE `firstname` = '" + args[0] + "' AND `lastname` = '" + args[1] + "';", function (err, result) {
+                if (config.useName) {
+                    const query = "SELECT name, phone_number, accounts FROM users WHERE `firstname` = '" + args[0] + "' AND `lastname` = '" + args[1] + "';";
+                } else {
+                    const query = "SELECT firstname, lastname, phone_number, accounts FROM users WHERE `firstname` = '" + args[0] + "' AND `lastname` = '" + args[1] + "';";
+                }
+                con.query(query, function (err, result) {
                     if (result.length == 0) {
                         return message.channel.send(trans.messages.not_found_user).then(msg => {
                             setTimeout(() => msg.delete(), 4000);
                         });
                     } else {
-                        sendEmbed(result[0].firstname + ' ' + result[0].lastname, message.channel);
+                        if (config.useName) {
+                            sendEmbed(result[0].name, message.channel);
+                        } else {
+                            sendEmbed(result[0].firstname + ' ' + result[0].lastname, message.channel);
+                        }
                         sendPhoneEmbed(result[0].phone_number, message.channel);
                         return sendMoneyEmbed(result[0].accounts, message.channel);
                     }
@@ -179,8 +188,17 @@ client.on('message', message => {
                             setTimeout(() => msg.delete(), 4000);
                         });
                     } else {
-                        con.query("SELECT firstname, lastname, sex, phone_number FROM users WHERE `identifier` = '"+result[0].owner+"';", function(err, result) {
-                            return sendVehicleEmbed(result[0].firstname+' '+result[0].lastname, result[0].sex, result[0].phone_number, args[0], message.channel);
+                        if (config.useName) {
+                            var query = "SELECT name, sex, phone_number FROM users WHERE `identifier` = '" + result[0].owner + "';";
+                        } else {
+                            var query = "SELECT firstname, lastname, sex, phone_number FROM users WHERE `identifier` = '" + result[0].owner + "';";
+                        }
+                        con.query(query, function (err, result) {
+                            if (config.useName) {
+                                return sendVehicleEmbed(result[0].name, result[0].sex, result[0].phone_number, args[0], message.channel);
+                            } else {
+                                return sendVehicleEmbed(result[0].firstname + ' ' + result[0].lastname, result[0].sex, result[0].phone_number, args[0], message.channel);
+                            }
                         });
                     }
                 })
@@ -194,4 +212,4 @@ client.on('message', message => {
     }
 })
 
-client.login(process.env.TOKEN);
+client.login(config.token);
