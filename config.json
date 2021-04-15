@@ -2,14 +2,14 @@
     "useName": false,
     "prefix": "!",
     "delete_command_usage": true,
-    "token": "ODMyMjIwODQyNTA2NzE1MTc1.YHgoDg.yQG3YyDlqZ6S8f3ljCozS1KENdY",
+    "token": "",
     
     "host": "localhost",
     "user": "root",
-    "database": "ingame_database",
+    "database": "",
     "password": "",
-    "staff_role_id": "823621597986160642",
-    "log_channel": "823621598493540357",
+    "staff_role_id": "",
+    "log_channel": "",
     "logo_url": "https://i.ibb.co/GTMkx63/FO71-BD2-CF77-C7-rhinoo3d.jpg"
     
 }
