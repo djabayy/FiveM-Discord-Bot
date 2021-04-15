@@ -5,7 +5,7 @@
     "token": "",
     
     "host": "localhost",
-    "user": "root",
+    "user": "",
     "database": "",
     "password": "",
     "staff_role_id": "",

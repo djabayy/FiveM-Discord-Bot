@@ -126,6 +126,22 @@ function sendVehicleEmbed(name, sex, phone, plate, chnl) {
     chnl.send(MadePrivateEmbed);
 }
 
+function versionEmbed() {
+    const MadePrivateEmbed = new Discord.MessageEmbed()
+        .setColor('#0099ff')
+        .setTitle(trans.check_plate.title)
+        .setURL(trans.check_plate.url)
+        .setAuthor(trans.check_plate.author, config.logo_url)
+        .setThumbnail(config.logo_url)
+        .setDescription(trans.check_plate.description)
+        .addFields(
+            { name: trans.check_plate.plate, value: plate, inline: false },
+        )
+        .setTimestamp()
+        .setFooter(trans.check_plate.footer, config.logo_url)
+    chnl.send(MadePrivateEmbed);
+}
+
 client.once('ready', () => {
     console.log('Loaded FiveM Bot by nightstudios.eu');
 })
@@ -146,9 +162,9 @@ client.on('message', message => {
         } else {
             if (message.member.roles.cache.has(config.staff_role_id)) {
                 if (config.useName) {
-                    const query = "SELECT name, phone_number, accounts FROM users WHERE `firstname` = '" + args[0] + "' AND `lastname` = '" + args[1] + "';";
+                    var query = "SELECT name, phone_number, accounts FROM users WHERE `firstname` = '" + args[0] + "' AND `lastname` = '" + args[1] + "';";
                 } else {
-                    const query = "SELECT firstname, lastname, phone_number, accounts FROM users WHERE `firstname` = '" + args[0] + "' AND `lastname` = '" + args[1] + "';";
+                    var query = "SELECT firstname, lastname, phone_number, accounts FROM users WHERE `firstname` = '" + args[0] + "' AND `lastname` = '" + args[1] + "';";
                 }
                 con.query(query, function (err, result) {
                     if (result.length == 0) {
