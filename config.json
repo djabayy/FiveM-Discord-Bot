@@ -5,6 +5,7 @@
     "token": "",
     
     "host": "localhost",
+    "port": "",
     "user": "",
     "database": "",
     "password": "",
