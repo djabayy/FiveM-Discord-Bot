@@ -14,6 +14,8 @@ Node
 npm
 </li>
 </ul>
+<h4>Support</h4>
+<p>If you need support, create a issue or join my discord and create a ticket: https://discord.gg/Q4fpy6cZUf</p>
 
 <h4>Preview</h4>
 <img src="https://i.ibb.co/Zh34wg5/2021-04-15-13-36-55-dev-chat-Discord.png">
