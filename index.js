@@ -2,21 +2,35 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('./config.json');
 const trans = require('./trans.json');
+var embeds = require('./embeds.js');
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
-    host: config.host,
-    port: config.port,
-    user: config.user,
-    password: config.password,
-    database: config.database,
+    host: config.ingame_database.host,
+    port: config.ingame_database.port,
+    user: config.ingame_database.user,
+    password: config.ingame_database.password,
+    database: config.ingame_database.database
+})
+
+var con2 = mysql.createConnection({
+    host: config.main_database.host,
+    port: config.main_database.port,
+    user: config.main_database.user,
+    password: config.main_database.password,
+    database: config.main_database.database
 })
 
 
 con.connect(function (err) {
     if (err) throw err;
-    console.log("Connected!");
+    console.log("Ingame database connection established!");
 });
+
+con2.connect(function (err) {
+    if (err) throw err;
+    console.log('Main database connection established!');
+})
 
 var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -27,125 +41,21 @@ var formatter = new Intl.NumberFormat('en-US', {
     //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
 });
 
-function sendEmbed(name, chnl) {
 
-    const MadePrivateEmbed = new Discord.MessageEmbed()
-        .setColor('#0099ff')
-        .setTitle(trans.check_player.title)
-        .setURL('https://synchrov.eu')
-        .setAuthor('SynchroV Systems', config.logo_url)
-        .setThumbnail(config.logo_url)
-        .addFields(
-            { name: trans.labels.name, value: name, inline: true },
-        )
-        .setTimestamp()
-        .setFooter('SynchroV Systems', config.logo_url);
-    chnl.send(MadePrivateEmbed);
-}
-
-function sendPhoneEmbed(phone, chnl) {
-    const MadePrivateEmbed = new Discord.MessageEmbed()
-        .setColor('#0099ff')
-        .setTitle(trans.check_player.title)
-        .setURL(trans.check_player.url)
-        .setAuthor(trans.check_player.author, config.logo_url)
-        .setThumbnail(config.logo_url)
-        .addFields(
-            { name: trans.labels.phone, value: phone, inline: true }
-        )
-        .setTimestamp()
-        .setFooter(trans.check_player.footer, config.logo_url)
-    chnl.send(MadePrivateEmbed);
-}
-
-function sendMoneyEmbed(accounts, chnl) {
-    const money = JSON.parse(accounts);
-    const MadePrivateEmbed = new Discord.MessageEmbed()
-        .setColor('#0099ff')
-        .setTitle(trans.check_player.title)
-        .setURL(trans.check_player.url)
-        .setAuthor(trans.check_player.author, config.logo_url)
-        .setThumbnail(config.logo_url)
-        .addFields(
-            { name: trans.labels.bank, value: formatter.format(money.bank), inline: true },
-            { name: trans.labels.money, value: formatter.format(money.money), inline: true },
-            { name: trans.labels.black_money, value: formatter.format(money.black_money), inline: true }
-        )
-        .setTimestamp()
-        .setFooter(trans.check_player.footer, config.logo_url)
-    chnl.send(MadePrivateEmbed);
-}
-
-function argEmbed(command, usage, usage_2, chnl) {
-    const MadePrivateEmbed = new Discord.MessageEmbed()
-        .setColor('#0099ff')
-        .setTitle(trans.check_player.title)
-        .setURL(trans.check_player.url)
-        .setAuthor(trans.check_player.author, config.logo_url)
-        .setThumbnail(config.logo_url)
-        .addFields(
-            { name: usage_2, value: config.prefix + command + usage, inline: true },
-        )
-        .setTimestamp()
-        .setFooter(trans.check_player.footer, config.logo_url)
-    chnl.send(MadePrivateEmbed);
-}
-
-function permissionEmbed(chnl, command, author) {
-    const MadePrivateEmbed = new Discord.MessageEmbed()
-        .setColor('#0099ff')
-        .setTitle(trans.log_settings.title)
-        .setDescription(trans.log_settings.text)
-        .setAuthor(trans.log_settings.author, config.logo_url)
-        .setThumbnail(config.logo_url)
-        .addFields(
-            { name: trans.log_settings.field_1, value: config.prefix + command, inline: true },
-            { name: trans.log_settings.field_2, value: `${author}`, inline: true }
-        )
-        .setTimestamp()
-        .setFooter(trans.log_settings.footer, config.logo_url)
-    chnl.send(MadePrivateEmbed);
-
-}
-
-function sendVehicleEmbed(name, sex, phone, plate, chnl) {
-    const MadePrivateEmbed = new Discord.MessageEmbed()
-        .setColor('#0099ff')
-        .setTitle(trans.check_plate.title)
-        .setURL(trans.check_plate.url)
-        .setAuthor(trans.check_plate.author, config.logo_url)
-        .setThumbnail(config.logo_url)
-        .setDescription(trans.check_plate.description)
-        .addFields(
-            { name: trans.check_plate.plate, value: plate, inline: false },
-            { name: trans.check_plate.name, value: name, inline: true, },
-            { name: trans.check_plate.sex, value: sex == 'm' ? trans.sex.male : trans.sex.female, inline: true, },
-            { name: trans.check_plate.phone, value: phone, inline: true, },
-        )
-        .setTimestamp()
-        .setFooter(trans.check_plate.footer, config.logo_url)
-    chnl.send(MadePrivateEmbed);
-}
-
-function versionEmbed() {
-    const MadePrivateEmbed = new Discord.MessageEmbed()
-        .setColor('#0099ff')
-        .setTitle(trans.check_plate.title)
-        .setURL(trans.check_plate.url)
-        .setAuthor(trans.check_plate.author, config.logo_url)
-        .setThumbnail(config.logo_url)
-        .setDescription(trans.check_plate.description)
-        .addFields(
-            { name: trans.check_plate.plate, value: plate, inline: false },
-        )
-        .setTimestamp()
-        .setFooter(trans.check_plate.footer, config.logo_url)
-    chnl.send(MadePrivateEmbed);
-}
 
 client.once('ready', () => {
-    console.log('Loaded FiveM Bot by nightstudios.eu');
+    console.log('Welcome to the FiveM Discord bot made by nightstudios! I hope you like it and have fun :D');
 })
+
+client.on("ready", () => {
+    client.user.setPresence({
+        activity: {
+            name: config.activity.activity,
+            type: config.activity.type
+        },
+        status: "online"
+    })
+});
 
 client.on('message', message => {
     if (!message.content.startsWith(config.prefix) || message.author.bot) return;
@@ -156,12 +66,9 @@ client.on('message', message => {
         if (config.delete_command_usage) message.delete();
 
         if (args.length < 2) {
-            message.channel.send(`Du hast keine Argumente angegeben, ${message.author}. Bitte nutze den Befehl wie folgt.`).then(msg => {
-                setTimeout(() => msg.delete(), 4000)
-            })
-            return argEmbed('checkPlayer', trans.check_player.usage_2, trans.check_player.usage_1, message.channel);
+            return embeds.argEmbed('checkPlayer', trans.messages.no_args, trans.check_player.usage_2, trans.check_player.usage_1, message.channel);
         } else {
-            if (message.member.roles.cache.has(config.staff_role_id)) {
+            if (message.member.roles.cache.has(config.staff_role_id, { checkAdmin: config.adminOverride, checkOwner: config.ownerOverride }) || message.member.hasPermission('MANAGE_CHANNELS', { checkAdmin: config.adminOverride, checkOwner: config.ownerOverride })) {
                 if (config.useName) {
                     var query = "SELECT name, phone_number, accounts FROM users WHERE `firstname` = '" + args[0] + "' AND `lastname` = '" + args[1] + "';";
                 } else {
@@ -174,16 +81,16 @@ client.on('message', message => {
                         });
                     } else {
                         if (config.useName) {
-                            sendEmbed(result[0].name, message.channel);
+                            embeds.sendEmbed(result[0].name, message.channel);
                         } else {
-                            sendEmbed(result[0].firstname + ' ' + result[0].lastname, message.channel);
+                            embeds.sendEmbed(result[0].firstname + ' ' + result[0].lastname, message.channel);
                         }
-                        sendPhoneEmbed(result[0].phone_number, message.channel);
-                        return sendMoneyEmbed(result[0].accounts, message.channel);
+                        embeds.sendPhoneEmbed(result[0].phone_number, message.channel);
+                        return embeds.sendMoneyEmbed(result[0].accounts, message.channel);
                     }
                 });
             } else {
-                permissionEmbed(client.channels.cache.get(config.log_channel), 'checkplayer', message.author);
+                embeds.permissionEmbed(client.channels.cache.get(config.log_channel), 'checkplayer', message.author);
                 return message.channel.send(trans.messages.insuficient_permissions).then(msg => {
                     setTimeout(() => msg.delete(), 4000)
                 })
@@ -193,12 +100,9 @@ client.on('message', message => {
         if (config.delete_command_usage) message.delete();
 
         if (args.length < 1) {
-            message.channel.send(`Du hast kein Argument angegeben, ${message.author}. Bitte nutze den Befehl wie folgt.`).then(msg => {
-                setTimeout(() => msg.delete(), 4000)
-            });
-            return argEmbed('checkplate', trans.plate_check.usage_2, trans.plate_check.usage_1, message.channel);
+            return embeds.argEmbed('checkplate', trans.messages.no_args, trans.plate_check.usage_2, trans.plate_check.usage_1, message.channel);
         } else {
-            if (message.member.roles.cache.has(config.staff_role_id)) {
+            if (message.member.roles.cache.has(config.staff_role_id, { checkAdmin: config.adminOverride, checkOwner: config.ownerOverride }) || message.member.hasPermission('MANAGE_CHANNELS', { checkAdmin: config.adminOverride, checkOwner: config.ownerOverride })) {
                 con.query('SELECT owner FROM owned_vehicles WHERE `plate` = "' + args[0] + '";', function (err, result) {
                     if (result.length == 0) {
                         return message.channel.send(trans.messages.not_found_plate).then(msg => {
@@ -212,19 +116,63 @@ client.on('message', message => {
                         }
                         con.query(query, function (err, result) {
                             if (config.useName) {
-                                return sendVehicleEmbed(result[0].name, result[0].sex, result[0].phone_number, args[0], message.channel);
+                                return embeds.sendVehicleEmbed(result[0].name, result[0].sex, result[0].phone_number, args[0], message.channel);
                             } else {
-                                return sendVehicleEmbed(result[0].firstname + ' ' + result[0].lastname, result[0].sex, result[0].phone_number, args[0], message.channel);
+                                return embeds.sendVehicleEmbed(result[0].firstname + ' ' + result[0].lastname, result[0].sex, result[0].phone_number, args[0], message.channel);
                             }
                         });
                     }
                 })
             } else {
-                permissionEmbed(client.channels.cache.get(config.log_channel), 'checkplate', message.author);
+                embeds.permissionEmbed(client.channels.cache.get(config.log_channel), 'checkplate', message.author);
                 return message.channel.send(trans.messages.insuficient_permissions).then(msg => {
                     setTimeout(() => msg.delete(), 4000)
                 })
             }
+        }
+    } else if (command === `warn`) {
+        if (config.delete_command_usage) message.delete();
+
+        if (args.length < 2) {
+            return embeds.argEmbed('warn', trans.messages.no_args, trans.warn.usage_2, trans.warn.usage_1, message.channel);
+        }
+        if (message.member.roles.cache.has(config.staff_role_id, { checkAdmin: config.adminOverride, checkOwner: config.ownerOverride }) || message.member.hasPermission('MANAGE_CHANNELS', { checkAdmin: config.adminOverride, checkOwner: config.ownerOverride })) {
+
+            let user = message.mentions.members.first();
+            if (user.hasPermission('ADMINISTRATOR', { checkAdmin: config.adminOverride, checkOwner: config.ownerOverride })) {
+                message.channel.send(trans.messages.is_admin);
+            } else { 
+                args.shift()
+                const reason = args.join(' ')
+                con2.query("INSERT INTO warns (discord_id, reason) VALUES ('" + message.mentions.users.first().id + "', '" + reason + "');");
+                con2.query("SELECT COUNT(*) AS count FROM warns WHERE `discord_id` = '" + message.mentions.users.first().id + "';", function (err, countWarns) {
+                    embeds.userWarnEmbed(reason, message.author, countWarns[0].count, client.users.cache.get(message.mentions.users.first().id));
+                    embeds.warnEmbed(message.mentions.users.first().id, reason, message.author, message.channel);
+
+                    if (countWarns[0].count >= config.maximalWarns) {
+                        let user = message.mentions.members.first();
+                        let role = message.guild.roles.cache.get(config.muteRole);
+                        user.roles.add(role);
+
+                        message.mentions.users.first().send(trans.messages.user_muted);
+                    }
+                });
+            }
+        }
+    } else if (command === 'resetwarn') {
+        if (config.delete_command_usage) message.delete();
+
+        if (args.length < 1) {
+            return embeds.argEmbed('resetwarn', trans.messages.no_args, trans.resetwarn.usage_2, trans.resetwarn.usage_1, message.channel);
+        }
+        if (message.member.roles.cache.has(config.staff_role_id, { checkAdmin: config.adminOverride, checkOwner: config.ownerOverride }) || message.member.hasPermission('MANAGE_CHANNELS', { checkAdmin: config.adminOverride, checkOwner: config.ownerOverride })) {
+            con2.query("DELETE FROM warns WHERE `discord_id` = '" + message.mentions.users.first().id + "';");
+            embeds.resetWarns(message.mentions.users.first().id, message.author, message.channel);
+
+            let user = message.mentions.members.first();
+            let role = message.guild.roles.cache.get(config.muteRole);
+            user.roles.remove(role);
+
         }
     }
 })

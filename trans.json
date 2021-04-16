@@ -8,28 +8,28 @@
         "field_2": "User:"
     },
     "check_player": {
-        "title": "SynchroV Systems",
-        "url": "https://synchrov.eu",
-        "author": "SynchroV",
-        "footer": "Your SynchroV-Team",
         "usage_1": "Usage",
         "usage_2": " <FIRSTNAME> <LASTNAME>"
     },
     "check_plate": {
         "title": "Vehicle search",
-        "url": "https://synchrov.eu",
-        "author": "SynchroV",
-        "footer": "Your SynchroV-Team",
         "name": "Owner",
         "sex": "Sex",
         "phone": "Phone number",
         "description": "The vehicle search yielded the following result:",
         "plate": "Licenseplate"
     },
+    "warn": {
+        "usage_1": "Usage",
+        "usage_2": " <USER> <REASON>"
+    },
     "messages": {
         "insuficient_permissions": "Unfortunately, you do not have the necessary rights to use this command!",
         "not_found_user": "No player was found.",
-        "not_found_plate": "No vehicle was found with this license plate."
+        "not_found_plate": "No vehicle was found with this license plate.",
+        "no_args": "The number of arguments do not match the required number.",
+        "user_muted": "You exceeded the maximum number of warns because of that you got automatically muted!",
+        "is_admin": "You cant warn other admins! Please use a user which has not the Staff role!"
     },
     "labels": {
         "name": "Name",
@@ -45,6 +45,30 @@
     "sex": {
         "male": "Male",
         "female": "Female"
+    },
+    "warnEmbed": {
+        "title": "User warned!",
+        "description": "You've successfully warned a user.",
+        "field_1": "User:",
+        "field_2": "Reason:",
+        "field_3": "Moderator:"
+    },
+    "gotWarned": {
+        "title": "You got warned!",
+        "description": "You got warned by a moderator for the following reason:",
+        "field_1": "Reason:",
+        "field_2": "Moderator:",
+        "field_3": "Warn count:"
+    },
+     "resetWarn": {
+         "title": "Warns deleted!",
+         "description": "The moderator deleted all warns from the user.",
+         "field_1": "User:",
+         "field_2": "Moderator:"
+     },
+     "resetwarn": {
+        "usage_1": "Usage",
+        "usage_2": " <@USER>"
     }
 }
 
