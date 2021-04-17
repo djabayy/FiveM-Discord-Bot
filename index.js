@@ -89,6 +89,7 @@ client.on('message', message => {
                         return embeds.sendMoneyEmbed(result[0].accounts, message.channel);
                     }
                 });
+                con.end()
             } else {
                 embeds.permissionEmbed(client.channels.cache.get(config.log_channel), 'checkplayer', message.author);
                 return message.channel.send(trans.messages.insuficient_permissions).then(msg => {
@@ -123,6 +124,7 @@ client.on('message', message => {
                         });
                     }
                 })
+                con.end()
             } else {
                 embeds.permissionEmbed(client.channels.cache.get(config.log_channel), 'checkplate', message.author);
                 return message.channel.send(trans.messages.insuficient_permissions).then(msg => {
@@ -157,6 +159,7 @@ client.on('message', message => {
                         message.mentions.users.first().send(trans.messages.user_muted);
                     }
                 });
+                con2.end()
             }
         }
     } else if (command === 'resetwarn') {
@@ -167,6 +170,7 @@ client.on('message', message => {
         }
         if (message.member.roles.cache.has(config.staff_role_id, { checkAdmin: config.adminOverride, checkOwner: config.ownerOverride }) || message.member.hasPermission('MANAGE_CHANNELS', { checkAdmin: config.adminOverride, checkOwner: config.ownerOverride })) {
             con2.query("DELETE FROM warns WHERE `discord_id` = '" + message.mentions.users.first().id + "';");
+            con.end()
             embeds.resetWarns(message.mentions.users.first().id, message.author, message.channel);
 
             let user = message.mentions.members.first();
