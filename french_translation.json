@@ -1,0 +1,49 @@
+{
+    "log_settings": {
+        "title": "Tentative d'utilisation de la commande",
+        "text": "Un joueur a tenté d'exécuter une commande pour laquelle il n'a pas d'autorisation !",
+        "author": "SynchroV",
+        "footer": "Votre SynchroV-Team",
+        "field_1": "Commande:",
+        "field_2": "Par:"
+    },
+    "check_player": {
+        "title": "SynchroV Systèmes",
+        "url": "https://synchrov.eu",
+        "author": "SynchroV",
+        "footer": "Votre SynchroV-Team",
+        "usage_1": "Utilisation",
+        "usage_2": " <PRÉNOM> <NOM>"
+    },
+    "check_plate": {
+        "title": "Recherche de véhicule",
+        "url": "https://synchrov.eu",
+        "author": "SynchroV",
+        "footer": "Votre SynchroV-Team",
+        "name": "Propriétaire",
+        "sex": "Genre",
+        "phone": "Téléphone",
+        "description": "Résultat de la recherche:",
+        "plate": "Plaque d'immatriculation"
+    },
+    "messages": {
+        "insuficient_permissions": "Malheureusement, vous n'avez pas les droits nécessaires pour utiliser cette commande !",
+        "not_found_user": "Aucun joueur n'a été trouvé.",
+        "not_found_plate": "Aucun véhicule avec cette plaque d'immatriculation n'a été trouvé."
+    },
+    "labels": {
+        "name": "Nom",
+        "phone": "Téléphone",
+        "bank": "Banque",
+        "money": "Cash",
+        "black_money": "Argent sale"
+    },
+    "plate_check": {
+        "usage_1": "Par",
+        "usage_2": " <PLAQUE D'IMMATRICULATION>"
+    },
+    "sex": {
+        "male": "Homme",
+        "female": "Femme"
+    }
+}
